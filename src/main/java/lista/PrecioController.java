@@ -28,7 +28,7 @@ class PrecioController {
     @RequestMapping("/")
     public @ResponseBody
     String index() {
-        return "Greetings from Spring Boot!";
+        return "Bienvenido a SuperList el proyecto mas simple y mas largo de la historia!";
     }
 
     @GetMapping("/precio")
