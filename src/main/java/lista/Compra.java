@@ -1,33 +1,29 @@
 package lista;
 
-
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Table;
 
 @Entity
-@Table(name ="CUSTOMER_ORDER")
-class Compra {
+public class Compra {
 
-   private @Id @GeneratedValue Long idCompra;
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer idCompra;
     private String descripcion;
     private Estados estado;
 
-    Compra() {}
 
-    Compra(String descripcion, Estados estado){
-        this.descripcion = descripcion;
-        this.estado = estado;
+    public Compra() {
 
     }
 
-    public Long getIdCompra() {
+    public Integer getIdCompra() {
         return idCompra;
     }
 
-    public void setIdCompra(Long idCompra) {
+    public void setIdCompra(Integer idCompra) {
         this.idCompra = idCompra;
     }
 
