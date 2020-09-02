@@ -11,13 +11,21 @@ public class CompraController {
     @Autowired
     CompraRepository compraRepository;
 
+    @RequestMapping("/")
+    public @ResponseBody
+    String index() {
+        return "Bienvenido a SuperList el proyecto mas simple y mas largo de la historia!";
+    }
 
-    @RequestMapping(value = "/insertcompra", method = RequestMethod.POST)
+   /**@RequestMapping(value = "/insertcompra", method = RequestMethod.POST)
     public @ResponseBody
     String insertCompra(@RequestParam String descripcion
-            , @RequestParam Estados estados) {
-        // @ResponseBody means the returned String is the response, not a view name
-        // @RequestParam means it is a parameter from the GET or POST request
+            , @RequestParam String estados) {*/
+
+   @PostMapping(path="/add") // Map ONLY POST Requests
+   public @ResponseBody String addCompra (@RequestParam String descripcion, @RequestParam String estados) {
+       // @ResponseBody means the returned String is the response, not a view name
+       // @RequestParam means it is a parameter from the GET or POST request
 
         Compra n = new Compra();
         n.setDescripcion(descripcion);
@@ -27,11 +35,16 @@ public class CompraController {
     }
     
     @RequestMapping(value = "/compras", method = RequestMethod.GET)
-    public <Compra> Iterable<lista.Compra> getCompras(){
+    public @ResponseBody Iterable<Compra> getCompras(){
         //return compraService.getAllCompra();
         return compraRepository.findAll();
     }
 
+    @GetMapping(path="/all")
+    public @ResponseBody Iterable<Compra> getAllUsers() {
+        // This returns a JSON or XML with the users
+        return compraRepository.findAll();
+    }
 
 }
 

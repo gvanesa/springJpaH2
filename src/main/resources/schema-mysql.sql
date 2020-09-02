@@ -1,5 +1,4 @@
 CREATE TABLE IF NOT EXISTS compra (
-  idCompra INTEGER NOT NULL,
   descripcion VARCHAR(100) NOT NULL,
   estado VARCHAR(25) NOT NULL
 );

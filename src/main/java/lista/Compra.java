@@ -11,13 +11,12 @@ public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer idCompra;
+    
     private String descripcion;
-    private Estados estado;
+    private String estado;
 
 
-    public Compra() {
 
-    }
 
     public Integer getIdCompra() {
         return idCompra;
@@ -35,13 +34,13 @@ public class Compra {
         this.descripcion = descripcion;
     }
 
-    public Estados getEstado() {
+    public String getEstado() {
         return estado;
     }
 
 
 
-    public void setEstado(Estados estado) {
+    public void setEstado(String estado) {
         this.estado = estado;
     }
 
