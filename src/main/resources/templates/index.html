@@ -1,0 +1,42 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SuperList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+<h1>Bienvenido a superlist!</h1>
+<p>Que deseas comprar? <a href="/compra/list">Aquí</a></p>
+<p>Esta es la lista de precios: <a href="/producto/list">Precios</a></p>
+
+</div>
+<table class="table table-bordered" border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Cantidad</th>
+        <th>Estado</th>
+        <th>Precio</th>
+        <th></th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="compra : ${compras}">
+        <td th:text="${compra.idCompra}"></td>
+        <td th:text="${compra.descripcion}"></td>
+        <td th:text="${compra.cantidad}"></td>
+        <td th:text="${compra.estado}"></td>
+        <td th:text="${productos.precio}"></td>
+        <td>
+            <a th:href="@{/compra/edit/{idCompra}(idCompra=${compra.idCompra})}" class="btn btn-success btn-sm" role="button">Update</a>
+            <a th:href="@{/compra/delete/{idCompra}(idCompra=${compra.idCompra})}" class="btn btn-danger btn-sm" role="button">Delete</a>
+        </td>
+    </tr>
+    </tbody>
+</table>
+
+
+
+</body>
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Superlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+</head>
+<body>
+    <div align="center">
+
+<div class="alert alert-success">
+    <strong>Lista de compras SuperList</strong>
+</div>
+<div class="container">
+    <div style="text-align: right; margin-bottom: 5px;">
+        <a th:href="@{/compra/add}" class="btn btn-success" role="button">+ Add producto a la lista de compra</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+            <th>Descripción</th>
+            <th>Cantidad</th>
+            <th>Estado</th>
+            <th>Precio</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="compra : ${compras}">
+            <td th:text="${compra.idCompra}"></td>
+            <td th:text="${compra.descripcion}"></td>
+            <td th:text="${compra.cantidad}"></td>
+            <td th:text="${compra.estado}"></td>
+
+            <td>
+                <a th:href="@{/compra/edit/{idCompra}(idCompra=${compra.idCompra})}" class="btn btn-success btn-sm" role="button">Update</a>
+                <a th:href="@{/compra/delete/{idCompra}(idCompra=${compra.idCompra})}" class="btn btn-danger btn-sm" role="button">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+    <table class="table table-striped table-bordered table-responsive" role="grid">
+        <thead>
+        <th>Category</th>
+        <th>Product</th>
+
+        </thead>
+        <tbody>
+        <tr role="row" class="odd" th:each="product:${productos}">
+
+            <td>
+                <p th:each="compra : ${compras}" th:if="(${compra.descripcion} == ${product.nombre})" th:text="${compra.descripcion}"></p>
+            </td>
+            <td th:text="${product.precio}">
+
+        </tr>
+        </tbody>
+    </table>
+</div>
+</div>
+
+</body>
+</html>
