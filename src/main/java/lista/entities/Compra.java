@@ -20,9 +20,25 @@ public class Compra {
     @Column(name = "cantidad")
     private Double cantidad;
 
-   /* @OneToOne(cascade = CascadeType.PERSIST)
-    @JoinColumn(name = "id_precio")
-    private Producto precio;*/
+    public Compra(long idCompra, String descripcion, String estado, Double cantidad, Producto precio) {
+        this.idCompra = idCompra;
+        this.descripcion = descripcion;
+        this.estado = estado;
+        this.cantidad = cantidad;
+        this.precio = precio;
+    }
+
+    public Producto getPrecio() {
+        return precio;
+    }
+
+    public void setPrecio(Producto precio) {
+        this.precio = precio;
+    }
+
+    @JoinColumn(name="precioId")
+    @OneToOne(cascade=CascadeType.ALL)
+    private Producto precio;
 
     public Compra(){}
 
@@ -59,11 +75,5 @@ public class Compra {
         this.cantidad = cantidad;
     }
 
-    /*public Producto getPrecio() {
-        return precio;
-    }
 
-    public void setPrecio(Producto precio) {
-        this.precio = precio;
-    }*/
 }

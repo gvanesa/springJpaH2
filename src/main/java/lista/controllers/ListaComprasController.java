@@ -19,8 +19,9 @@ public class ListaComprasController {
 
     @GetMapping
     public String index(Model modelo, Compra compra, Producto producto){
-        modelo.addAttribute("compra",compraRepository.findAll());
-        modelo.addAttribute("producto", repository.findAll());
+
+        modelo.addAttribute("compras",compraRepository.findAll());
+        modelo.addAttribute("productos", repository.findAll());
         return "index";
     }
 }

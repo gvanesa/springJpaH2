@@ -1,6 +1,7 @@
 package lista.controllers;
 
 import lista.entities.Compra;
+import lista.entities.Producto;
 import lista.repository.CompraRepository;
 import lista.repository.ProductoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -18,6 +19,17 @@ public class CompraController {
     private CompraRepository compraRepository;
     @Autowired
     private ProductoRepository repository;
+
+
+    @GetMapping
+    public String index(Model modelo, Compra compra, Producto producto){
+        modelo.addAttribute( "compra", new Compra());
+        modelo.addAttribute( "producto", new Producto());
+        modelo.addAttribute("compras",compraRepository.findAll());
+        modelo.addAttribute("productos", repository.findAll());
+        return "index";
+    }
+
 
     //@RequestMapping(value = "/list", method = RequestMethod.GET)
     @GetMapping("/list")

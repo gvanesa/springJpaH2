@@ -17,6 +17,7 @@
         <thead>
         <tr>
             <th>ID</th>
+           <!-- <th>ID</th>-->
             <th>Nombre</th>
             <th>Precio</th>
             <th></th>
@@ -25,6 +26,9 @@
         <tbody>
         <tr th:each="producto : ${productos}">
             <td th:text="${producto.id}"></td>
+<!--
+            <td><a href="/producto/${id}">Id</a></td>
+-->
             <td th:text="${producto.nombre}"></td>
             <td th:text="${producto.precio}"></td>
 

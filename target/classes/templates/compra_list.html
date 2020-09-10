@@ -51,7 +51,9 @@
         <tr role="row" class="odd" th:each="product:${productos}">
 
             <td>
-                <p th:each="compra : ${compras}" th:if="(${compra.descripcion} == ${product.nombre})" th:text="${compra.descripcion}"></p>
+                <p th:each="compra : ${compras}"
+                   th:if="(${compra.descripcion} == ${product.nombre})"
+                   th:text="${compra.descripcion}"></p>
             </td>
             <td th:text="${product.precio}">
 
