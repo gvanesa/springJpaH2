@@ -13,8 +13,8 @@ class PrecioModelAssembler  implements RepresentationModelAssembler<Precio, Enti
     @Override
     public EntityModel<Precio> toModel(Precio precio){
         return EntityModel.of(precio,
-                linkTo(methodOn(PrecioController.class).one(precio.getId())).withSelfRel(),
-                linkTo(methodOn(PrecioController.class).all()).withRel("Precio"));
+              linkTo(methodOn(PrecioController.class).one(precio.getId())).withSelfRel(),
+              linkTo(methodOn(PrecioController.class).all()).withRel("Precio"));
     }
 
 }
