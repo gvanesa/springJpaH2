@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Spring Boot Thymeleaf example</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="alert alert-success">
+    <strong>Agrega tu producto a la lista</strong>
+</div>
+<div class="container">
+    <h5>Agregar o editar</h5>
+    <form action="#" th:action="@{/producto/addEdit}" method="post" th:object="${producto}">
+        Nombre:<br/>
+        <input type="text" class="form-control" id="nombre" th:field="*{nombre}" placeholder="Nombre"/>
+        <br/>
+        Precio:<br/>
+        <input type="text" class="form-control" id="precio" th:field="*{precio}" placeholder="precio"/>
+        <input type="hidden" id="id" th:field="*{id}">
+        <br/>
+        <button type="submit" class="btn btn-info">Submit</button>
+    </form>
+</div>
+</body>
+</html>

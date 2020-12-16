@@ -1,0 +1,96 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <title>SuperList</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <style type="text/css">
+	body, html{
+		width:250px;
+	}
+
+	input:not([type="checkbox"]):not([type="radio"]),select{
+		width:160px;
+	}
+	input:not([type="radio"]), select{
+		margin-bottom:15px;
+	}
+
+	.button{
+		width:200px !important;
+	}
+
+</style>
+</head>
+<body>
+<h1>Bienvenido a superlist!</h1>
+<p>Que deseas comprar? <a href="/compra/list">Aquí</a></p>
+<p>Esta es la lista de precios: <a href="/producto/list">Precios</a></p>
+</div>
+
+<span>Prueba 23000</span>
+<form th:action="@{/compra/addEdit}" th:object="${compra}" method="POST" id="compraForm">
+
+    <div style="border: 1px solid black; padding:20px;">
+        <span th:if="${compra.idCompra !=null}"><input type="text" th:field="${compra.idCompra}" readonly><br/></span>
+
+        <label th:text="Compra"></label><br/>
+        <input type="text" placeholder="Compra" th:field="${compra.descripcion}"/><br/>
+
+        <label th:text="Compra"></label><br/>
+        <input type="text" placeholder="Cantidad" th:field="${compra.cantidad}"/><br/>
+
+       <!-- <label th:text="Estado"></label><br/>
+        <select th:field="${compra.estado}" multiple="multiple">
+            <option th:each="estado :${estados}" th:value="${estado.id}" th:text="${estado.descripcion}">
+            </option>
+        </select><br/>-->
+
+        <label th:text="Estado"></label><br/>
+        <input type="text" th:field="${compra.estado}" />
+    </div><br/>
+
+    <span>Producto</span>
+    <div style="border: 1px solid black; padding:20px;">
+        <label th:text="Precio"></label><br/>
+        <input type="text" placeholder="Precio" th:field="${compra.precio}"/><br/>
+    </div>
+
+
+
+    <input type="Submit" th:value="${compra.idCompra != null }?'Guardar compra':'Crear compra'" th:class="button"/>
+    <th:block th:if="${compra.idCompra !=null}">
+        <a th:href="@{/index}">Cancel</a>
+    </th:block>
+
+</form>
+<table border="1">
+    <thead>
+    <tr>
+        <th>ID</th>
+        <th>Descripción</th>
+        <th>Cantidad</th>
+        <th>Estado</th>
+        <th>Precio Unitario</th>
+<!--
+        <rh>Precio total</rh>
+-->
+
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="compra : ${compras}">
+        <td th:text="${compra.idCompra}"></td>
+        <td th:text="${compra.descripcion}"></td>
+        <td th:text="${compra.cantidad}"></td>
+        <td th:text="${compra.estado}"></td>
+    <td th:each="product:${productos}" th:if="(${compra.descripcion} == ${product.nombre})" th:text="${product.precio}"></td>
+<!--
+    <td th:value="(${compra.cantidad) * $(product.precio})"></td>
+-->
+    </tr>
+    </tbody>
+
+</table>
+
+</body>
+</html>

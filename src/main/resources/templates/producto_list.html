@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Superlist</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link rel="stylesheet" th:href="@{/webjars/bootstrap/4.4.1/css/bootstrap.min.css}">
+</head>
+<body>
+<div class="alert alert-success">
+    <strong>Lista de precios SuperList</strong>
+</div>
+<div class="container">
+    <div style="text-align: right; margin-bottom: 5px;">
+        <a th:href="@{/producto/add}" class="btn btn-success" role="button">+ Add producto</a>
+    </div>
+    <table class="table table-bordered">
+        <thead>
+        <tr>
+            <th>ID</th>
+           <!-- <th>ID</th>-->
+            <th>Nombre</th>
+            <th>Precio</th>
+            <th></th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr th:each="producto : ${productos}">
+            <td th:text="${producto.id}"></td>
+<!--
+            <td><a href="/producto/${id}">Id</a></td>
+-->
+            <td th:text="${producto.nombre}"></td>
+            <td th:text="${producto.precio}"></td>
+
+            <td>
+                <a th:href="@{/producto/edit/{id}(id=${producto.id})}" class="btn btn-success btn-sm" role="button">Update</a>
+                <a th:href="@{/producto/delete/{id}(id=${producto.id})}" class="btn btn-danger btn-sm" role="button">Delete</a>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+</div>
+</body>
+</html>
